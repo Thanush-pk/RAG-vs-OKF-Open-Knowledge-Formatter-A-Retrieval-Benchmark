@@ -1,0 +1,524 @@
+[
+  {
+    "source": "agent-lifecycle.md",
+    "section": "Overview",
+    "text": "Describes the full lifecycle of an AI agent on the platform, from deployment to retirement.",
+    "embedding_text": "agent-lifecycle - Overview: Describes the full lifecycle of an AI agent on the platform, from deployment to retirement."
+  },
+  {
+    "source": "agent-lifecycle.md",
+    "section": "Lifecycle Stages",
+    "text": "1. **Registration** \u2014 a new agent type is registered with agent-orchestrator (see [deploy-new-agent](deploy-new-agent.md)).\n2. **Active** \u2014 the agent receives tasks routed by agent-orchestrator, using embedding-service for any retrieval-based work.\n3. **Idle** \u2014 agent-orchestrator scales down agent instances with no assigned tasks to save resources.\n4. **Retirement** \u2014 an agent type is deregistered when replaced by a newer version or no longer needed.",
+    "embedding_text": "agent-lifecycle - Lifecycle Stages: 1. **Registration** \u2014 a new agent type is registered with agent-orchestrator (see [deploy-new-agent](deploy-new-agent.md)).\n2. **Active** \u2014 the agent receives tasks routed by agent-orchestrator, using embedding-service for any retrieval-based work.\n3. **Idle** \u2014 agent-orchestrator scales down agent instances with no assigned tasks to save resources.\n4. **Retirement** \u2014 an agent type is deregistered when replaced by a newer version or no longer needed."
+  },
+  {
+    "source": "agent-lifecycle.md",
+    "section": "Related",
+    "text": "- See [agent-orchestrator](agent-orchestrator.md) for the service managing this lifecycle\n- See [deploy-new-agent](deploy-new-agent.md) for the registration procedure\n- See [agent-success-rate](agent-success-rate.md) and [daily-active-agents](daily-active-agents.md) for lifecycle-related metrics",
+    "embedding_text": "agent-lifecycle - Related: - See [agent-orchestrator](agent-orchestrator.md) for the service managing this lifecycle\n- See [deploy-new-agent](deploy-new-agent.md) for the registration procedure\n- See [agent-success-rate](agent-success-rate.md) and [daily-active-agents](daily-active-agents.md) for lifecycle-related metrics"
+  },
+  {
+    "source": "agent-orchestrator.md",
+    "section": "Overview",
+    "text": "The agent-orchestrator service manages the lifecycle of AI agents on the platform \u2014 spinning up new agent instances, routing tasks to them, and tearing them down when idle. It is the control plane for all agent-based workflows.",
+    "embedding_text": "agent-orchestrator - Overview: The agent-orchestrator service manages the lifecycle of AI agents on the platform \u2014 spinning up new agent instances, routing tasks to them, and tearing them down when idle. It is the control plane for all agent-based workflows."
+  },
+  {
+    "source": "agent-orchestrator.md",
+    "section": "Owner",
+    "text": "Platform Team - Agent Infrastructure squad",
+    "embedding_text": "agent-orchestrator - Owner: Platform Team - Agent Infrastructure squad"
+  },
+  {
+    "source": "agent-orchestrator.md",
+    "section": "Dependencies",
+    "text": "- auth-service (validates requests before scheduling agent tasks)\n- embedding-service (agents use this for retrieval-augmented tasks)",
+    "embedding_text": "agent-orchestrator - Dependencies: - auth-service (validates requests before scheduling agent tasks)\n- embedding-service (agents use this for retrieval-augmented tasks)"
+  },
+  {
+    "source": "agent-orchestrator.md",
+    "section": "Endpoints",
+    "text": "- POST /agents - launch a new agent instance\n- GET /agents/{id} - get agent status\n- POST /agents/{id}/tasks - assign a task to a running agent\n- DELETE /agents/{id} - terminate an agent instance",
+    "embedding_text": "agent-orchestrator - Endpoints: - POST /agents - launch a new agent instance\n- GET /agents/{id} - get agent status\n- POST /agents/{id}/tasks - assign a task to a running agent\n- DELETE /agents/{id} - terminate an agent instance"
+  },
+  {
+    "source": "agent-orchestrator.md",
+    "section": "Related",
+    "text": "- See [agent-success-rate](agent-success-rate.md) for current performance\n- See [daily-active-agents](daily-active-agents.md) for usage metrics\n- See [deploy-new-agent](deploy-new-agent.md) for deployment procedure\n- See [agent-lifecycle](agent-lifecycle.md) for the full lifecycle process",
+    "embedding_text": "agent-orchestrator - Related: - See [agent-success-rate](agent-success-rate.md) for current performance\n- See [daily-active-agents](daily-active-agents.md) for usage metrics\n- See [deploy-new-agent](deploy-new-agent.md) for deployment procedure\n- See [agent-lifecycle](agent-lifecycle.md) for the full lifecycle process"
+  },
+  {
+    "source": "agent-success-rate.md",
+    "section": "Overview",
+    "text": "Percentage of agent tasks that complete successfully without error or timeout, tracked across all agents managed by agent-orchestrator.",
+    "embedding_text": "agent-success-rate - Overview: Percentage of agent tasks that complete successfully without error or timeout, tracked across all agents managed by agent-orchestrator."
+  },
+  {
+    "source": "agent-success-rate.md",
+    "section": "Current Value",
+    "text": "94.2%",
+    "embedding_text": "agent-success-rate - Current Value: 94.2%"
+  },
+  {
+    "source": "agent-success-rate.md",
+    "section": "Target",
+    "text": "Above 95%",
+    "embedding_text": "agent-success-rate - Target: Above 95%"
+  },
+  {
+    "source": "agent-success-rate.md",
+    "section": "Measured By",
+    "text": "agent-orchestrator task completion logs, aggregated daily",
+    "embedding_text": "agent-success-rate - Measured By: agent-orchestrator task completion logs, aggregated daily"
+  },
+  {
+    "source": "agent-success-rate.md",
+    "section": "Related",
+    "text": "- Metric for [agent-orchestrator](agent-orchestrator.md)\n- See [daily-active-agents](daily-active-agents.md) for related usage volume",
+    "embedding_text": "agent-success-rate - Related: - Metric for [agent-orchestrator](agent-orchestrator.md)\n- See [daily-active-agents](daily-active-agents.md) for related usage volume"
+  },
+  {
+    "source": "auth-failure-rate.md",
+    "section": "Overview",
+    "text": "Percentage of login attempts against auth-service that fail, including both invalid credentials and system errors.",
+    "embedding_text": "auth-failure-rate - Overview: Percentage of login attempts against auth-service that fail, including both invalid credentials and system errors."
+  },
+  {
+    "source": "auth-failure-rate.md",
+    "section": "Current Value",
+    "text": "2.1%",
+    "embedding_text": "auth-failure-rate - Current Value: 2.1%"
+  },
+  {
+    "source": "auth-failure-rate.md",
+    "section": "Target",
+    "text": "Under 3% (values are expected to include normal user error; system-error failures are tracked separately)",
+    "embedding_text": "auth-failure-rate - Target: Under 3% (values are expected to include normal user error; system-error failures are tracked separately)"
+  },
+  {
+    "source": "auth-failure-rate.md",
+    "section": "Measured By",
+    "text": "auth-service request logs, aggregated hourly",
+    "embedding_text": "auth-failure-rate - Measured By: auth-service request logs, aggregated hourly"
+  },
+  {
+    "source": "auth-failure-rate.md",
+    "section": "Related",
+    "text": "- Metric for [auth-service](auth-service.md)\n- See [rotate-api-keys](rotate-api-keys.md) \u2014 key rotation can cause temporary spikes in this metric",
+    "embedding_text": "auth-failure-rate - Related: - Metric for [auth-service](auth-service.md)\n- See [rotate-api-keys](rotate-api-keys.md) \u2014 key rotation can cause temporary spikes in this metric"
+  },
+  {
+    "source": "auth-service.md",
+    "section": "Overview",
+    "text": "The auth-service handles user authentication and session management \u2014 login, logout, account creation, and account deletion. It is the security gatekeeper for the platform: every request to orders-api, agent-orchestrator, and notification-service must first be validated here.",
+    "embedding_text": "auth-service - Overview: The auth-service handles user authentication and session management \u2014 login, logout, account creation, and account deletion. It is the security gatekeeper for the platform: every request to orders-api, agent-orchestrator, and notification-service must first be validated here."
+  },
+  {
+    "source": "auth-service.md",
+    "section": "Owner",
+    "text": "Platform Team - Identity & Security squad",
+    "embedding_text": "auth-service - Owner: Platform Team - Identity & Security squad"
+  },
+  {
+    "source": "auth-service.md",
+    "section": "Dependencies",
+    "text": "- user-database (stores credentials and account records)",
+    "embedding_text": "auth-service - Dependencies: - user-database (stores credentials and account records)"
+  },
+  {
+    "source": "auth-service.md",
+    "section": "Manages",
+    "text": "- OAuth token issuance and validation\n- Session credentials\n- Account security policies",
+    "embedding_text": "auth-service - Manages: - OAuth token issuance and validation\n- Session credentials\n- Account security policies"
+  },
+  {
+    "source": "auth-service.md",
+    "section": "Endpoints",
+    "text": "- POST /auth/login\n- POST /auth/logout\n- POST /auth/accounts\n- DELETE /auth/accounts/{id}",
+    "embedding_text": "auth-service - Endpoints: - POST /auth/login\n- POST /auth/logout\n- POST /auth/accounts\n- DELETE /auth/accounts/{id}"
+  },
+  {
+    "source": "auth-service.md",
+    "section": "Related",
+    "text": "- Depended on by [orders-api](orders-api.md), [agent-orchestrator](agent-orchestrator.md), [notification-service](notification-service.md)\n- See [rotate-api-keys](rotate-api-keys.md) for credential rotation procedure\n- See [auth-failure-rate](auth-failure-rate.md) for current metrics",
+    "embedding_text": "auth-service - Related: - Depended on by [orders-api](orders-api.md), [agent-orchestrator](agent-orchestrator.md), [notification-service](notification-service.md)\n- See [rotate-api-keys](rotate-api-keys.md) for credential rotation procedure\n- See [auth-failure-rate](auth-failure-rate.md) for current metrics"
+  },
+  {
+    "source": "daily-active-agents.md",
+    "section": "Overview",
+    "text": "Count of unique agent instances that processed at least one task in the last 24 hours.",
+    "embedding_text": "daily-active-agents - Overview: Count of unique agent instances that processed at least one task in the last 24 hours."
+  },
+  {
+    "source": "daily-active-agents.md",
+    "section": "Current Value",
+    "text": "1,340",
+    "embedding_text": "daily-active-agents - Current Value: 1,340"
+  },
+  {
+    "source": "daily-active-agents.md",
+    "section": "Target",
+    "text": "No fixed target \u2014 tracked as a leading indicator of platform growth",
+    "embedding_text": "daily-active-agents - Target: No fixed target \u2014 tracked as a leading indicator of platform growth"
+  },
+  {
+    "source": "daily-active-agents.md",
+    "section": "Measured By",
+    "text": "agent-orchestrator instance logs, aggregated daily at midnight UTC",
+    "embedding_text": "daily-active-agents - Measured By: agent-orchestrator instance logs, aggregated daily at midnight UTC"
+  },
+  {
+    "source": "daily-active-agents.md",
+    "section": "Related",
+    "text": "- Metric for [agent-orchestrator](agent-orchestrator.md)\n- See [agent-success-rate](agent-success-rate.md) for related quality metric",
+    "embedding_text": "daily-active-agents - Related: - Metric for [agent-orchestrator](agent-orchestrator.md)\n- See [agent-success-rate](agent-success-rate.md) for related quality metric"
+  },
+  {
+    "source": "data-flow-orders.md",
+    "section": "Overview",
+    "text": "Walks through how a single customer order moves through the platform, end to end.",
+    "embedding_text": "data-flow-orders - Overview: Walks through how a single customer order moves through the platform, end to end."
+  },
+  {
+    "source": "data-flow-orders.md",
+    "section": "Flow",
+    "text": "1. A client sends a request to orders-api to create a new order.\n2. orders-api calls auth-service to validate the request token.\n3. Once validated, orders-api writes the order record and returns a confirmation.\n4. orders-api triggers notification-service to send an order confirmation email.\n5. Order status updates are available via orders-api's GET endpoint for the lifetime of the order.",
+    "embedding_text": "data-flow-orders - Flow: 1. A client sends a request to orders-api to create a new order.\n2. orders-api calls auth-service to validate the request token.\n3. Once validated, orders-api writes the order record and returns a confirmation.\n4. orders-api triggers notification-service to send an order confirmation email.\n5. Order status updates are available via orders-api's GET endpoint for the lifetime of the order."
+  },
+  {
+    "source": "data-flow-orders.md",
+    "section": "Related",
+    "text": "- See [orders-api](orders-api.md), [auth-service](auth-service.md), [notification-service](notification-service.md) for the services involved\n- See [system-architecture-overview](system-architecture-overview.md) for the broader platform context",
+    "embedding_text": "data-flow-orders - Related: - See [orders-api](orders-api.md), [auth-service](auth-service.md), [notification-service](notification-service.md) for the services involved\n- See [system-architecture-overview](system-architecture-overview.md) for the broader platform context"
+  },
+  {
+    "source": "deploy-new-agent.md",
+    "section": "Overview",
+    "text": "Procedure for deploying a new agent type to the agent-orchestrator platform.",
+    "embedding_text": "deploy-new-agent - Overview: Procedure for deploying a new agent type to the agent-orchestrator platform."
+  },
+  {
+    "source": "deploy-new-agent.md",
+    "section": "Owner",
+    "text": "Platform Team - Agent Infrastructure squad",
+    "embedding_text": "deploy-new-agent - Owner: Platform Team - Agent Infrastructure squad"
+  },
+  {
+    "source": "deploy-new-agent.md",
+    "section": "Steps",
+    "text": "1. Register the new agent's task schema with agent-orchestrator via the internal admin panel.\n2. Confirm the agent's required tools are available through embedding-service and any external MCP servers it depends on.\n3. Deploy the agent container image to the staging cluster.\n4. Run the agent against the golden test task set to confirm baseline success rate.\n5. Promote the image to production via the CI/CD pipeline.\n6. Monitor [agent-success-rate](agent-success-rate.md) and [daily-active-agents](daily-active-agents.md) for the first 24 hours after rollout.",
+    "embedding_text": "deploy-new-agent - Steps: 1. Register the new agent's task schema with agent-orchestrator via the internal admin panel.\n2. Confirm the agent's required tools are available through embedding-service and any external MCP servers it depends on.\n3. Deploy the agent container image to the staging cluster.\n4. Run the agent against the golden test task set to confirm baseline success rate.\n5. Promote the image to production via the CI/CD pipeline.\n6. Monitor [agent-success-rate](agent-success-rate.md) and [daily-active-agents](daily-active-agents.md) for the first 24 hours after rollout."
+  },
+  {
+    "source": "deploy-new-agent.md",
+    "section": "Rollback",
+    "text": "If success rate drops more than 5% below baseline, follow [rollback-procedure](rollback-procedure.md) immediately.",
+    "embedding_text": "deploy-new-agent - Rollback: If success rate drops more than 5% below baseline, follow [rollback-procedure](rollback-procedure.md) immediately."
+  },
+  {
+    "source": "deploy-new-agent.md",
+    "section": "Related",
+    "text": "- See [agent-orchestrator](agent-orchestrator.md) for the service this deploys to\n- See [agent-lifecycle](agent-lifecycle.md) for how this fits into the broader agent lifecycle",
+    "embedding_text": "deploy-new-agent - Related: - See [agent-orchestrator](agent-orchestrator.md) for the service this deploys to\n- See [agent-lifecycle](agent-lifecycle.md) for how this fits into the broader agent lifecycle"
+  },
+  {
+    "source": "embedding-service-throughput.md",
+    "section": "Overview",
+    "text": "Number of text embedding requests the embedding-service can process per second under normal load.",
+    "embedding_text": "embedding-service-throughput - Overview: Number of text embedding requests the embedding-service can process per second under normal load."
+  },
+  {
+    "source": "embedding-service-throughput.md",
+    "section": "Current Value",
+    "text": "850 requests/sec",
+    "embedding_text": "embedding-service-throughput - Current Value: 850 requests/sec"
+  },
+  {
+    "source": "embedding-service-throughput.md",
+    "section": "Target",
+    "text": "1000 requests/sec (to support projected agent growth)",
+    "embedding_text": "embedding-service-throughput - Target: 1000 requests/sec (to support projected agent growth)"
+  },
+  {
+    "source": "embedding-service-throughput.md",
+    "section": "Measured By",
+    "text": "Load testing suite, run weekly against a staging replica",
+    "embedding_text": "embedding-service-throughput - Measured By: Load testing suite, run weekly against a staging replica"
+  },
+  {
+    "source": "embedding-service-throughput.md",
+    "section": "Related",
+    "text": "- Metric for [embedding-service](embedding-service.md)\n- See [scale-embedding-service](scale-embedding-service.md) \u2014 scaling procedure to increase this",
+    "embedding_text": "embedding-service-throughput - Related: - Metric for [embedding-service](embedding-service.md)\n- See [scale-embedding-service](scale-embedding-service.md) \u2014 scaling procedure to increase this"
+  },
+  {
+    "source": "embedding-service.md",
+    "section": "Overview",
+    "text": "The embedding-service converts text into vector representations for use in retrieval and similarity search. It is used by agent-orchestrator for RAG-based agent tasks and by internal search tooling.",
+    "embedding_text": "embedding-service - Overview: The embedding-service converts text into vector representations for use in retrieval and similarity search. It is used by agent-orchestrator for RAG-based agent tasks and by internal search tooling."
+  },
+  {
+    "source": "embedding-service.md",
+    "section": "Owner",
+    "text": "Platform Team - ML Infrastructure squad",
+    "embedding_text": "embedding-service - Owner: Platform Team - ML Infrastructure squad"
+  },
+  {
+    "source": "embedding-service.md",
+    "section": "Dependencies",
+    "text": "- None (stateless compute service; loads model weights on startup)",
+    "embedding_text": "embedding-service - Dependencies: - None (stateless compute service; loads model weights on startup)"
+  },
+  {
+    "source": "embedding-service.md",
+    "section": "Endpoints",
+    "text": "- POST /embed - convert a batch of text inputs into vectors\n- GET /embed/model-info - return the currently loaded model name and version",
+    "embedding_text": "embedding-service - Endpoints: - POST /embed - convert a batch of text inputs into vectors\n- GET /embed/model-info - return the currently loaded model name and version"
+  },
+  {
+    "source": "embedding-service.md",
+    "section": "Related",
+    "text": "- Depended on by [agent-orchestrator](agent-orchestrator.md)\n- See [embedding-service-throughput](embedding-service-throughput.md) for current performance\n- See [scale-embedding-service](scale-embedding-service.md) for scaling procedure\n- See [incident-high-latency](incident-high-latency.md) for known incident history",
+    "embedding_text": "embedding-service - Related: - Depended on by [agent-orchestrator](agent-orchestrator.md)\n- See [embedding-service-throughput](embedding-service-throughput.md) for current performance\n- See [scale-embedding-service](scale-embedding-service.md) for scaling procedure\n- See [incident-high-latency](incident-high-latency.md) for known incident history"
+  },
+  {
+    "source": "incident-high-latency.md",
+    "section": "Overview",
+    "text": "Runbook and historical record for diagnosing and resolving high-latency incidents on orders-api.",
+    "embedding_text": "incident-high-latency - Overview: Runbook and historical record for diagnosing and resolving high-latency incidents on orders-api."
+  },
+  {
+    "source": "incident-high-latency.md",
+    "section": "Owner",
+    "text": "Platform Team - on-call engineer",
+    "embedding_text": "incident-high-latency - Owner: Platform Team - on-call engineer"
+  },
+  {
+    "source": "incident-high-latency.md",
+    "section": "Last Occurrence",
+    "text": "orders-api p99 latency breached 400ms threshold for over 20 minutes, traced to a slow downstream call to embedding-service during a load spike.",
+    "embedding_text": "incident-high-latency - Last Occurrence: orders-api p99 latency breached 400ms threshold for over 20 minutes, traced to a slow downstream call to embedding-service during a load spike."
+  },
+  {
+    "source": "incident-high-latency.md",
+    "section": "Diagnosis Steps",
+    "text": "1. Check [p99-latency-orders-api](p99-latency-orders-api.md) to confirm the breach.\n2. Check [embedding-service-throughput](embedding-service-throughput.md) for signs of saturation.\n3. If embedding-service is saturated, follow [scale-embedding-service](scale-embedding-service.md).\n4. If the cause is a bad orders-api deployment instead, follow [rollback-procedure](rollback-procedure.md).",
+    "embedding_text": "incident-high-latency - Diagnosis Steps: 1. Check [p99-latency-orders-api](p99-latency-orders-api.md) to confirm the breach.\n2. Check [embedding-service-throughput](embedding-service-throughput.md) for signs of saturation.\n3. If embedding-service is saturated, follow [scale-embedding-service](scale-embedding-service.md).\n4. If the cause is a bad orders-api deployment instead, follow [rollback-procedure](rollback-procedure.md)."
+  },
+  {
+    "source": "incident-high-latency.md",
+    "section": "Related",
+    "text": "- See [orders-api](orders-api.md) for the affected service\n- See [embedding-service](embedding-service.md) for the dependency involved in the last occurrence",
+    "embedding_text": "incident-high-latency - Related: - See [orders-api](orders-api.md) for the affected service\n- See [embedding-service](embedding-service.md) for the dependency involved in the last occurrence"
+  },
+  {
+    "source": "notification-service.md",
+    "section": "Overview",
+    "text": "The notification-service sends transactional emails and push notifications \u2014 order confirmations, account changes, and agent task completion alerts. It is a downstream consumer of events from orders-api and agent-orchestrator.",
+    "embedding_text": "notification-service - Overview: The notification-service sends transactional emails and push notifications \u2014 order confirmations, account changes, and agent task completion alerts. It is a downstream consumer of events from orders-api and agent-orchestrator."
+  },
+  {
+    "source": "notification-service.md",
+    "section": "Owner",
+    "text": "Platform Team - Comms squad",
+    "embedding_text": "notification-service - Owner: Platform Team - Comms squad"
+  },
+  {
+    "source": "notification-service.md",
+    "section": "Dependencies",
+    "text": "- auth-service (validates internal service requests)",
+    "embedding_text": "notification-service - Dependencies: - auth-service (validates internal service requests)"
+  },
+  {
+    "source": "notification-service.md",
+    "section": "Endpoints",
+    "text": "- POST /notifications/email - send a transactional email\n- POST /notifications/push - send a push notification\n- GET /notifications/{id}/status - check delivery status",
+    "embedding_text": "notification-service - Endpoints: - POST /notifications/email - send a transactional email\n- POST /notifications/push - send a push notification\n- GET /notifications/{id}/status - check delivery status"
+  },
+  {
+    "source": "notification-service.md",
+    "section": "Related",
+    "text": "- Depended on by [orders-api](orders-api.md)\n- See [on-call-process](on-call-process.md) for escalation if delivery failures spike",
+    "embedding_text": "notification-service - Related: - Depended on by [orders-api](orders-api.md)\n- See [on-call-process](on-call-process.md) for escalation if delivery failures spike"
+  },
+  {
+    "source": "on-call-process.md",
+    "section": "Overview",
+    "text": "Describes how the Platform Team handles incident escalation outside of business hours.",
+    "embedding_text": "on-call-process - Overview: Describes how the Platform Team handles incident escalation outside of business hours."
+  },
+  {
+    "source": "on-call-process.md",
+    "section": "Escalation Steps",
+    "text": "1. An alert fires from the observability stack when a metric breaches its target (e.g. [p99-latency-orders-api](p99-latency-orders-api.md) or [auth-failure-rate](auth-failure-rate.md)).\n2. The on-call engineer acknowledges the alert within 10 minutes.\n3. The engineer follows the relevant runbook \u2014 [incident-high-latency](incident-high-latency.md), [rollback-procedure](rollback-procedure.md), or [rotate-api-keys](rotate-api-keys.md) depending on the alert type.\n4. If unresolved within 30 minutes, the engineer escalates to the squad lead for the affected service.\n5. A post-incident summary is logged after resolution.",
+    "embedding_text": "on-call-process - Escalation Steps: 1. An alert fires from the observability stack when a metric breaches its target (e.g. [p99-latency-orders-api](p99-latency-orders-api.md) or [auth-failure-rate](auth-failure-rate.md)).\n2. The on-call engineer acknowledges the alert within 10 minutes.\n3. The engineer follows the relevant runbook \u2014 [incident-high-latency](incident-high-latency.md), [rollback-procedure](rollback-procedure.md), or [rotate-api-keys](rotate-api-keys.md) depending on the alert type.\n4. If unresolved within 30 minutes, the engineer escalates to the squad lead for the affected service.\n5. A post-incident summary is logged after resolution."
+  },
+  {
+    "source": "on-call-process.md",
+    "section": "Related",
+    "text": "- See [system-architecture-overview](system-architecture-overview.md) for the services this process covers\n- See [notification-service](notification-service.md) \u2014 delivery failures here also trigger this process",
+    "embedding_text": "on-call-process - Related: - See [system-architecture-overview](system-architecture-overview.md) for the services this process covers\n- See [notification-service](notification-service.md) \u2014 delivery failures here also trigger this process"
+  },
+  {
+    "source": "orders-api.md",
+    "section": "Overview",
+    "text": "The orders-api service handles creation, retrieval, and status updates for customer orders. It is the primary write path for the e-commerce checkout flow.",
+    "embedding_text": "orders-api - Overview: The orders-api service handles creation, retrieval, and status updates for customer orders. It is the primary write path for the e-commerce checkout flow."
+  },
+  {
+    "source": "orders-api.md",
+    "section": "Owner",
+    "text": "Platform Team - Order Processing squad",
+    "embedding_text": "orders-api - Owner: Platform Team - Order Processing squad"
+  },
+  {
+    "source": "orders-api.md",
+    "section": "Dependencies",
+    "text": "- auth-service (validates request tokens before processing)\n- notification-service (triggers order confirmation emails)",
+    "embedding_text": "orders-api - Dependencies: - auth-service (validates request tokens before processing)\n- notification-service (triggers order confirmation emails)"
+  },
+  {
+    "source": "orders-api.md",
+    "section": "Endpoints",
+    "text": "- POST /orders - create a new order\n- GET /orders/{id} - retrieve order status\n- PATCH /orders/{id} - update order status",
+    "embedding_text": "orders-api - Endpoints: - POST /orders - create a new order\n- GET /orders/{id} - retrieve order status\n- PATCH /orders/{id} - update order status"
+  },
+  {
+    "source": "orders-api.md",
+    "section": "Related",
+    "text": "- See [p99-latency-orders-api](p99-latency-orders-api.md) for current performance\n- See [incident-high-latency](incident-high-latency.md) for known incident history\n- See [rollback-procedure](rollback-procedure.md) for deployment rollback steps\n- See [data-flow-orders](data-flow-orders.md) for how orders move through the system",
+    "embedding_text": "orders-api - Related: - See [p99-latency-orders-api](p99-latency-orders-api.md) for current performance\n- See [incident-high-latency](incident-high-latency.md) for known incident history\n- See [rollback-procedure](rollback-procedure.md) for deployment rollback steps\n- See [data-flow-orders](data-flow-orders.md) for how orders move through the system"
+  },
+  {
+    "source": "p99-latency-orders-api.md",
+    "section": "Overview",
+    "text": "99th-percentile response latency for the orders-api service, measured across all endpoints.",
+    "embedding_text": "p99-latency-orders-api - Overview: 99th-percentile response latency for the orders-api service, measured across all endpoints."
+  },
+  {
+    "source": "p99-latency-orders-api.md",
+    "section": "Current Value",
+    "text": "420ms (as of last measurement window)",
+    "embedding_text": "p99-latency-orders-api - Current Value: 420ms (as of last measurement window)"
+  },
+  {
+    "source": "p99-latency-orders-api.md",
+    "section": "Target",
+    "text": "Under 300ms",
+    "embedding_text": "p99-latency-orders-api - Target: Under 300ms"
+  },
+  {
+    "source": "p99-latency-orders-api.md",
+    "section": "Measured By",
+    "text": "Platform observability stack, sampled every 60 seconds from orders-api request logs",
+    "embedding_text": "p99-latency-orders-api - Measured By: Platform observability stack, sampled every 60 seconds from orders-api request logs"
+  },
+  {
+    "source": "p99-latency-orders-api.md",
+    "section": "Related",
+    "text": "- Metric for [orders-api](orders-api.md)\n- See [incident-high-latency](incident-high-latency.md) \u2014 this metric breached target during the last incident",
+    "embedding_text": "p99-latency-orders-api - Related: - Metric for [orders-api](orders-api.md)\n- See [incident-high-latency](incident-high-latency.md) \u2014 this metric breached target during the last incident"
+  },
+  {
+    "source": "rollback-procedure.md",
+    "section": "Overview",
+    "text": "Standard procedure for rolling back a bad deployment across platform services.",
+    "embedding_text": "rollback-procedure - Overview: Standard procedure for rolling back a bad deployment across platform services."
+  },
+  {
+    "source": "rollback-procedure.md",
+    "section": "Owner",
+    "text": "Platform Team - on-call engineer",
+    "embedding_text": "rollback-procedure - Owner: Platform Team - on-call engineer"
+  },
+  {
+    "source": "rollback-procedure.md",
+    "section": "Applies To",
+    "text": "- [orders-api](orders-api.md)\n- [agent-orchestrator](agent-orchestrator.md)",
+    "embedding_text": "rollback-procedure - Applies To: - [orders-api](orders-api.md)\n- [agent-orchestrator](agent-orchestrator.md)"
+  },
+  {
+    "source": "rollback-procedure.md",
+    "section": "Steps",
+    "text": "1. Identify the last known-good version from the CI/CD deployment history.\n2. Trigger a rollback via the deployment pipeline to that version.\n3. Confirm the rollback completed by checking the service's health endpoint.\n4. Monitor the relevant metric for the affected service (e.g. [p99-latency-orders-api](p99-latency-orders-api.md) or [agent-success-rate](agent-success-rate.md)) for 15 minutes post-rollback.\n5. Notify the on-call channel and update the incident log.",
+    "embedding_text": "rollback-procedure - Steps: 1. Identify the last known-good version from the CI/CD deployment history.\n2. Trigger a rollback via the deployment pipeline to that version.\n3. Confirm the rollback completed by checking the service's health endpoint.\n4. Monitor the relevant metric for the affected service (e.g. [p99-latency-orders-api](p99-latency-orders-api.md) or [agent-success-rate](agent-success-rate.md)) for 15 minutes post-rollback.\n5. Notify the on-call channel and update the incident log."
+  },
+  {
+    "source": "rollback-procedure.md",
+    "section": "Related",
+    "text": "- See [incident-high-latency](incident-high-latency.md) \u2014 an example incident where this procedure was used\n- See [on-call-process](on-call-process.md) for escalation context",
+    "embedding_text": "rollback-procedure - Related: - See [incident-high-latency](incident-high-latency.md) \u2014 an example incident where this procedure was used\n- See [on-call-process](on-call-process.md) for escalation context"
+  },
+  {
+    "source": "rotate-api-keys.md",
+    "section": "Overview",
+    "text": "Procedure for rotating credentials and API keys managed by auth-service.",
+    "embedding_text": "rotate-api-keys - Overview: Procedure for rotating credentials and API keys managed by auth-service."
+  },
+  {
+    "source": "rotate-api-keys.md",
+    "section": "Owner",
+    "text": "Platform Team - Identity & Security squad",
+    "embedding_text": "rotate-api-keys - Owner: Platform Team - Identity & Security squad"
+  },
+  {
+    "source": "rotate-api-keys.md",
+    "section": "Steps",
+    "text": "1. Generate new credentials via the auth-service admin panel.\n2. Distribute new keys to dependent services ([orders-api](orders-api.md), [agent-orchestrator](agent-orchestrator.md), [notification-service](notification-service.md)) through the secrets manager.\n3. Deploy dependent services to pick up the new keys.\n4. Revoke the old keys after confirming all services are healthy on the new credentials.\n5. Monitor [auth-failure-rate](auth-failure-rate.md) for a temporary spike during the transition window.",
+    "embedding_text": "rotate-api-keys - Steps: 1. Generate new credentials via the auth-service admin panel.\n2. Distribute new keys to dependent services ([orders-api](orders-api.md), [agent-orchestrator](agent-orchestrator.md), [notification-service](notification-service.md)) through the secrets manager.\n3. Deploy dependent services to pick up the new keys.\n4. Revoke the old keys after confirming all services are healthy on the new credentials.\n5. Monitor [auth-failure-rate](auth-failure-rate.md) for a temporary spike during the transition window."
+  },
+  {
+    "source": "rotate-api-keys.md",
+    "section": "Related",
+    "text": "- See [auth-service](auth-service.md) for the owning service\n- See [on-call-process](on-call-process.md) if failure rate spikes beyond expected levels",
+    "embedding_text": "rotate-api-keys - Related: - See [auth-service](auth-service.md) for the owning service\n- See [on-call-process](on-call-process.md) if failure rate spikes beyond expected levels"
+  },
+  {
+    "source": "scale-embedding-service.md",
+    "section": "Overview",
+    "text": "Procedure for scaling embedding-service horizontally when throughput approaches capacity.",
+    "embedding_text": "scale-embedding-service - Overview: Procedure for scaling embedding-service horizontally when throughput approaches capacity."
+  },
+  {
+    "source": "scale-embedding-service.md",
+    "section": "Owner",
+    "text": "Platform Team - ML Infrastructure squad",
+    "embedding_text": "scale-embedding-service - Owner: Platform Team - ML Infrastructure squad"
+  },
+  {
+    "source": "scale-embedding-service.md",
+    "section": "Steps",
+    "text": "1. Check [embedding-service-throughput](embedding-service-throughput.md) to confirm the service is near its target ceiling.\n2. Increase the replica count for embedding-service in the Kubernetes deployment config.\n3. Confirm new replicas pass health checks and are receiving traffic via the load balancer.\n4. Re-run the load testing suite to confirm the new throughput ceiling.\n5. Update [embedding-service-throughput](embedding-service-throughput.md) with the new baseline once confirmed.",
+    "embedding_text": "scale-embedding-service - Steps: 1. Check [embedding-service-throughput](embedding-service-throughput.md) to confirm the service is near its target ceiling.\n2. Increase the replica count for embedding-service in the Kubernetes deployment config.\n3. Confirm new replicas pass health checks and are receiving traffic via the load balancer.\n4. Re-run the load testing suite to confirm the new throughput ceiling.\n5. Update [embedding-service-throughput](embedding-service-throughput.md) with the new baseline once confirmed."
+  },
+  {
+    "source": "scale-embedding-service.md",
+    "section": "Related",
+    "text": "- See [embedding-service](embedding-service.md) for the owning service\n- See [incident-high-latency](incident-high-latency.md) \u2014 a past incident where this procedure was triggered",
+    "embedding_text": "scale-embedding-service - Related: - See [embedding-service](embedding-service.md) for the owning service\n- See [incident-high-latency](incident-high-latency.md) \u2014 a past incident where this procedure was triggered"
+  },
+  {
+    "source": "system-architecture-overview.md",
+    "section": "Overview",
+    "text": "High-level overview of how the AI Platform Team's services fit together.",
+    "embedding_text": "system-architecture-overview - Overview: High-level overview of how the AI Platform Team's services fit together."
+  },
+  {
+    "source": "system-architecture-overview.md",
+    "section": "Core Services",
+    "text": "- [auth-service](auth-service.md) \u2014 validates identity for every other service\n- [orders-api](orders-api.md) \u2014 handles the e-commerce checkout write path\n- [agent-orchestrator](agent-orchestrator.md) \u2014 manages AI agent lifecycle and task routing\n- [embedding-service](embedding-service.md) \u2014 provides vector embeddings for agents and search\n- [notification-service](notification-service.md) \u2014 sends emails and push notifications",
+    "embedding_text": "system-architecture-overview - Core Services: - [auth-service](auth-service.md) \u2014 validates identity for every other service\n- [orders-api](orders-api.md) \u2014 handles the e-commerce checkout write path\n- [agent-orchestrator](agent-orchestrator.md) \u2014 manages AI agent lifecycle and task routing\n- [embedding-service](embedding-service.md) \u2014 provides vector embeddings for agents and search\n- [notification-service](notification-service.md) \u2014 sends emails and push notifications"
+  },
+  {
+    "source": "system-architecture-overview.md",
+    "section": "Request Flow",
+    "text": "A typical request enters through orders-api or agent-orchestrator, is authenticated by auth-service, and may trigger downstream calls to embedding-service (for agent tasks) or notification-service (for order confirmations).",
+    "embedding_text": "system-architecture-overview - Request Flow: A typical request enters through orders-api or agent-orchestrator, is authenticated by auth-service, and may trigger downstream calls to embedding-service (for agent tasks) or notification-service (for order confirmations)."
+  },
+  {
+    "source": "system-architecture-overview.md",
+    "section": "Related",
+    "text": "- See [data-flow-orders](data-flow-orders.md) for a detailed walkthrough of one request path\n- See [agent-lifecycle](agent-lifecycle.md) for how agents move through the system\n- See [on-call-process](on-call-process.md) for how incidents are handled across these services",
+    "embedding_text": "system-architecture-overview - Related: - See [data-flow-orders](data-flow-orders.md) for a detailed walkthrough of one request path\n- See [agent-lifecycle](agent-lifecycle.md) for how agents move through the system\n- See [on-call-process](on-call-process.md) for how incidents are handled across these services"
+  }
+]

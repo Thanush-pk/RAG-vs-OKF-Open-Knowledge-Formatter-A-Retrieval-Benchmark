@@ -1,0 +1,166 @@
+[
+    {
+        "id": "q1",
+        "type": "simple_lookup",
+        "question": "What is the current agent-success-rate?",
+        "expected_answer": "94.2%",
+        "expected_sources": [
+            "agent-success-rate.md"
+        ]
+    },
+    {
+        "id": "q2",
+        "type": "simple_lookup",
+        "question": "What is the current p99 latency for orders-api?",
+        "expected_answer": "420ms",
+        "expected_sources": [
+            "p99-latency-orders-api.md"
+        ]
+    },
+    {
+        "id": "q3",
+        "type": "simple_lookup",
+        "question": "What is the current auth failure rate?",
+        "expected_answer": "2.1%",
+        "expected_sources": [
+            "auth-failure-rate.md"
+        ]
+    },
+    {
+        "id": "q4",
+        "type": "simple_lookup",
+        "question": "How many daily active agents are there?",
+        "expected_answer": "1,340",
+        "expected_sources": [
+            "daily-active-agents.md"
+        ]
+    },
+    {
+        "id": "q5",
+        "type": "simple_lookup",
+        "question": "What is the target throughput for embedding-service?",
+        "expected_answer": "1000 requests/sec",
+        "expected_sources": [
+            "embedding-service-throughput.md"
+        ]
+    },
+    {
+        "id": "q6",
+        "type": "simple_lookup",
+        "question": "Who owns the auth-service?",
+        "expected_answer": "Platform Team - Identity & Security squad",
+        "expected_sources": [
+            "auth-service.md"
+        ]
+    },
+    {
+        "id": "q7",
+        "type": "simple_lookup",
+        "question": "What are the endpoints for orders-api?",
+        "expected_answer": "POST /orders, GET /orders/{id}, PATCH /orders/{id}",
+        "expected_sources": [
+            "orders-api.md"
+        ]
+    },
+    {
+        "id": "q8",
+        "type": "multi_hop",
+        "question": "What services does orders-api depend on, and what is their current p99 latency?",
+        "expected_answer": "orders-api depends on auth-service and notification-service. Only orders-api itself has a tracked p99 latency metric (420ms); no p99 latency metric exists for auth-service or notification-service in this knowledge base.",
+        "expected_sources": [
+            "orders-api.md",
+            "p99-latency-orders-api.md"
+        ]
+    },
+    {
+        "id": "q9",
+        "type": "multi_hop",
+        "question": "If embedding-service goes down, what else is affected?",
+        "expected_answer": "agent-orchestrator depends on embedding-service for retrieval-augmented agent tasks, so agent-based workflows would be affected.",
+        "expected_sources": [
+            "embedding-service.md",
+            "agent-orchestrator.md"
+        ]
+    },
+    {
+        "id": "q10",
+        "type": "multi_hop",
+        "question": "What is the procedure for handling a high latency incident on orders-api, and what are the possible root causes?",
+        "expected_answer": "Check p99-latency-orders-api to confirm the breach, then check embedding-service-throughput for saturation. If embedding-service is saturated, follow scale-embedding-service. If the cause is a bad deployment, follow rollback-procedure.",
+        "expected_sources": [
+            "incident-high-latency.md",
+            "p99-latency-orders-api.md",
+            "embedding-service-throughput.md",
+            "scale-embedding-service.md",
+            "rollback-procedure.md"
+        ]
+    },
+    {
+        "id": "q11",
+        "type": "multi_hop",
+        "question": "What should you monitor after rotating API keys?",
+        "expected_answer": "auth-failure-rate, since key rotation can cause a temporary spike.",
+        "expected_sources": [
+            "rotate-api-keys.md",
+            "auth-failure-rate.md"
+        ]
+    },
+    {
+        "id": "q12",
+        "type": "multi_hop",
+        "question": "Describe how the platform team handles incident escalation.",
+        "expected_answer": "An alert fires when a metric breaches target, the on-call engineer acknowledges within 10 minutes, follows the relevant runbook, escalates to squad lead if unresolved in 30 minutes, and logs a post-incident summary.",
+        "expected_sources": [
+            "on-call-process.md"
+        ]
+    },
+    {
+        "id": "q13",
+        "type": "multi_hop",
+        "question": "What happens to an order after it is created?",
+        "expected_answer": "orders-api validates the request via auth-service, writes the order record, returns confirmation, and triggers notification-service to send a confirmation email. Status updates remain available via the GET endpoint.",
+        "expected_sources": [
+            "data-flow-orders.md",
+            "orders-api.md"
+        ]
+    },
+    {
+        "id": "q14",
+        "type": "multi_hop",
+        "question": "What is the rollback procedure and which services does it apply to?",
+        "expected_answer": "Identify the last known-good version, trigger rollback via the deployment pipeline, confirm via health endpoint, monitor the relevant metric for 15 minutes, and notify on-call. It applies to orders-api and agent-orchestrator.",
+        "expected_sources": [
+            "rollback-procedure.md"
+        ]
+    },
+    {
+        "id": "q15",
+        "type": "unanswerable",
+        "question": "What is artificial intelligence?",
+        "expected_answer": "Not answerable from this knowledge base.",
+        "expected_sources": []
+    },
+    {
+        "id": "q16",
+        "type": "unanswerable",
+        "question": "What is the weather like today?",
+        "expected_answer": "Not answerable from this knowledge base.",
+        "expected_sources": []
+    },
+    {
+        "id": "q17",
+        "type": "unanswerable",
+        "question": "What is the company's revenue this quarter?",
+        "expected_answer": "Not answerable from this knowledge base.",
+        "expected_sources": []
+    },
+    {
+        "id": "q18",
+        "type": "simple_lookup",
+        "question": "What is the current value of embedding-service-throughput?",
+        "expected_answer": "850 requests/sec",
+        "expected_sources": [
+            "embedding-service-throughput.md"
+        ]
+    }
+]

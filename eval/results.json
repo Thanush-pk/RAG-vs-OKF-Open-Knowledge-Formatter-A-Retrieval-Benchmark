@@ -1,0 +1,238 @@
+[
+  {
+    "id": "q1",
+    "type": "simple_lookup",
+    "question": "What is the current agent-success-rate?",
+    "expected_answer": "94.2%",
+    "expected_sources": [
+      "agent-success-rate.md"
+    ],
+    "rag_answer": "The current agent-success-rate is 94.2%.",
+    "rag_time_seconds": 29.88,
+    "okf_answer": "The current agent-success-rate stands at 94.2%. This percentage represents the proportion of tasks that agents successfully complete without any errors or timeouts, as managed by the platform's agent orchestrator service. The target for this metric is to maintain an above 95% success rate consistently across all agent instances on the platform.",
+    "okf_time_seconds": 53.05
+  },
+  {
+    "id": "q2",
+    "type": "simple_lookup",
+    "question": "What is the current p99 latency for orders-api?",
+    "expected_answer": "420ms",
+    "expected_sources": [
+      "p99-latency-orders-api.md"
+    ],
+    "rag_answer": "420ms (as of last measurement window)",
+    "rag_time_seconds": 15.51,
+    "okf_answer": "The current P99 latency for `orders-api` as measured from last measurement window stands at **420ms**, according to data retrieved in [p99-latency-orders-api](https://example.com/metrics#p99_latency).",
+    "okf_time_seconds": 109.7
+  },
+  {
+    "id": "q3",
+    "type": "simple_lookup",
+    "question": "What is the current auth failure rate?",
+    "expected_answer": "2.1%",
+    "expected_sources": [
+      "auth-failure-rate.md"
+    ],
+    "rag_answer": "2.1%",
+    "rag_time_seconds": 15.52,
+    "okf_answer": "The current auth failure rate, as mentioned in the provided contexts, stands at **2.1%**. This metric represents successful login attempts that fail due to incorrect credentials or system errors while interacting with the `auth-service`. The team aims for this figure to stay under **3%** but expects normal user error contributions and tracks separate cases of system-error related failure rates within it.",
+    "okf_time_seconds": 86.05
+  },
+  {
+    "id": "q4",
+    "type": "simple_lookup",
+    "question": "How many daily active agents are there?",
+    "expected_answer": "1,340",
+    "expected_sources": [
+      "daily-active-agents.md"
+    ],
+    "rag_answer": "According to the provided context from 'daily-active-agents.md (Section: Current Value)', there are currently 1,340 unique agent instances that have processed at least one task in the last 24 hours. These agents were monitored based on their logs aggregated daily at midnight UTC time as stated in 'daily-active-agents.md (Section: Measured By)'.",
+    "rag_time_seconds": 40.47,
+    "okf_answer": "There is currently a count of **1,340 unique agent instances** that have processed at least one task in the last 24 hours according to the `daily-active-agents` metric. This figure reflects engagement and usage on the platform but does not directly indicate performance or success rates associated with these agents' tasks.",
+    "okf_time_seconds": 105.45
+  },
+  {
+    "id": "q5",
+    "type": "simple_lookup",
+    "question": "What is the target throughput for embedding-service?",
+    "expected_answer": "1000 requests/sec",
+    "expected_sources": [
+      "embedding-service-throughput.md"
+    ],
+    "rag_answer": "The context provided states that there's a need to support projected agent growth with an intended target of handling 1000 text embedding requests per second. So, based on this information from \"embedding-service-throughput.md (Section: Target)\" part which says, the throughput is required for supporting predicted increase in agents and should be able to handle approximately 'around' or up to 1000 requests/sec under normal load conditions according to a document titled embedding-service-performance.docx dated May 27th, 2decade ago (as per the original source context).",
+    "rag_time_seconds": 54.6,
+    "okf_answer": "The target throughput for the embedding-service, as stated in the provided contexts, is to increase from its current value of 850 requests per second (req/sec) up to 1000 req/sec. This scaling goal aims to support projected agent growth on the platform.",
+    "okf_time_seconds": 171.33
+  },
+  {
+    "id": "q6",
+    "type": "simple_lookup",
+    "question": "Who owns the auth-service?",
+    "expected_answer": "Platform Team - Identity & Security squad",
+    "expected_sources": [
+      "auth-service.md"
+    ],
+    "rag_answer": "The Identity & Security squad from the Platform Team owns the auth-service.",
+    "rag_time_seconds": 27.84,
+    "okf_answer": "The auth-service is owned by the Platform Team, specifically under their Identity & Security squad. They are responsible for handling user authentication and session management on the platform. This includes login, logout, account creation, and deletion processes, as well as OAuth token issuance and validation, managing session credentials, and setting up account security policies.",
+    "okf_time_seconds": 197.82
+  },
+  {
+    "id": "q7",
+    "type": "simple_lookup",
+    "question": "What are the endpoints for orders-api?",
+    "expected_answer": "POST /orders, GET /orders/{id}, PATCH /orders/{id}",
+    "expected_sources": [
+      "orders-api.md"
+    ],
+    "rag_answer": "The endpoints for orders-api, based on the provided context, include POST /orders (to create a new order), PATCH/PUT /orders/{id} (to update an existing order status), and GET /orders/{id} (to retrieve the current status of an individual order).",
+    "rag_time_seconds": 53.92,
+    "okf_answer": "The `orders-api` service provides three primary endpoints to interact with customer order data and statuses, which include:\n\n1. POST /orders - This endpoint is used to create a new order by submitting an HTTP POST request containing the relevant information required for establishing a fresh sales transaction within the e-commerce platform's checkout flow. Upon successful creation of an order through this service, it triggers further processes as defined in its behavior and dependencies outlined below:\n\n2. GET /orders/{id} - This endpoint is designed to retrieve the status or details of a specific customer order that has been previously created within the system. The `{id}` placeholder represents the unique identifier assigned to each individual order record, which must be provided as part of the request path when accessing this particular information about an existing transaction tied to `orders-api`.\n\n3. PATCH /orders/{id} - This endpoint provides functionality for updating specific aspects of a customer's already established and active order status within their lifecycle on our platform. It complements the create/GET endpoints by providing write capabilities with respect to altering particular details about an existing record, which is distinctly differentiated through its PATCH method in accordance to RESTful API design principles that separate read operations from update or partial updates of resources as required within this system\u2019s scope.\n\nIt's noteworthy to mention the `orders-api`'s role and relationships with other services, such as 'auth-service', which validates request tokens for security purposes before an order is processed; and 'notification-service', responsible for triggering notifications like confirmation emails once a new or updated status occurs within orders' lifecycle. These interactions further enhance the functionality provided by `orders-api` to create, retrieve (GET), and update customer orders while ensuring appropriate authentication measures are in place as well as keeping customers informed about their order process flow through outreach communications facilitated via this interconnected service architecture within our platform environment.",
+    "okf_time_seconds": 159.43
+  },
+  {
+    "id": "q8",
+    "type": "multi_hop",
+    "question": "What services does orders-api depend on, and what is their current p99 latency?",
+    "expected_answer": "orders-api depends on auth-service and notification-service. Only orders-api itself has a tracked p99 latency metric (420ms); no p99 latency metric exists for auth-service or notification-service in this knowledge base.",
+    "expected_sources": [
+      "orders-api.md",
+      "p99-latency-orders-api.md"
+    ],
+    "rag_answer": "Based on the provided context blocks from `p99-latency-orders-api.md`, it appears that the Order's API service has a measured metric for its own performance but does not provide specific information about dependencies or their p99 latencies directly in these sections. The only related metrics mentioned pertain to itself, including being part of an incident involving high latency and having a target response time under 30th-second mark. Without additional context indicating direct dependency relationships on other services within the provided text segments from `orders-api.md` or any mention regarding their p99 latency values, I cannot answer which specific dependent services Order's API depends on nor provide their current p99 latency metrics based solely on these documents.\n\nTo accurately determine service dependencies and performance metrics of those services, further information beyond the provided context would be required from either additional sections in `orders-api.md` or other relevant documentation that explicitly details interservice communication and measured latencies for dependent services.",
+    "rag_time_seconds": 74.4,
+    "okf_answer": "orders-api depends on two services which are auth-service and notification-service as mentioned in its dependencies section. The provided concepts do not specify the exact 'p99' response time for these individual services directly, hence I cannot give a precise answer regarding their p99 latency from this information alone. Only metrics or documentation specifically detailing the performance of each service are referenced here, and they don't include those details in regards to auth-service and notification-service within our context.",
+    "okf_time_seconds": 32.65
+  },
+  {
+    "id": "q9",
+    "type": "multi_hop",
+    "question": "If embedding-service goes down, what else is affected?",
+    "expected_answer": "agent-orchestrator depends on embedding-service for retrieval-augmented agent tasks, so agent-based workflows would be affected.",
+    "expected_sources": [
+      "embedding-service.md",
+      "agent-orchestrator.md"
+    ],
+    "rag_answer": "Based on the provided context, if the embedding-service were to go down, it would affect the agent-orchestrator which relies upon the service as mentioned in \"Depended on by [agent-orchestrator](agentnerrorhandler.md).\" It might also impact internal search tooling that uses embedded representations for tasks like RAG (Retrieval Augmented Generation)-based agents and similarity searches, but there's not enough specific information about this dependency from the given context to provide a detailed answer on how exactly it would be affected or what systems rely directly upon embedding-service.",
+    "rag_time_seconds": 51.89,
+    "okf_answer": "According to the concepts provided, if the `embedding-service` experiences downtime or failure, it directly impacts agent-based workflows since this service manages the lifecycle of AI agents on the platform. Specifically, as per 'agent-orchestrator' details:\n\n1. The ability of the system to launch new agent instances (via `POST /agents` endpoint) would be hindered because it relies on authenticated requests from a validating service (`auth-service`) that are routed after being processed by the embedding-service for retrieval-augmented tasks.\n2. The assignment and execution of tasks to running agent instances (through `POST /agents/{id}/tasks` endpoint) could be interrupted or delayed, as agents require vectors generated by the service which is currently down.\n3. Terminating an idle agent instance (`DELETE /agents/{id}`) would also fail since this procedure depends on successful communication with and status checks against running agents that in turn depend on embedding-service functionality for retrieval tasks via vector representations. \n\nFurthermore, the `agent_success_rate` might drop as a consequence of these disruforts which can impact overall agent performance metrics documented under 'daily_active_agents' and potentially require intervention per rollback procedures in case it is linked to an issue within orders-api or embedding service.\n\nGiven the last occurrence noted where `orders-api` latency breached 400ms threshold due to a slow downstream call to the now unavailable `embedding-service`, this incident highlights that downtime of one critical component can indeed have cascading effects on dependent services and their operations.",
+    "okf_time_seconds": 138.89
+  },
+  {
+    "id": "q10",
+    "type": "multi_hop",
+    "question": "What is the procedure for handling a high latency incident on orders-api, and what are the possible root causes?",
+    "expected_answer": "Check p99-latency-orders-api to confirm the breach, then check embedding-service-throughput for saturation. If embedding-service is saturated, follow scale-embedding-service. If the cause is a bad deployment, follow rollback-procedure.",
+    "expected_sources": [
+      "incident-high-latency.md",
+      "p99-latency-orders-api.md",
+      "embedding-service-throughput.md",
+      "scale-embedding-service.md",
+      "rollback-procedure.md"
+    ],
+    "rag_answer": "To handle an incidence of unusually high latency (breach) with p99 at or above 400ms thresholds sustained over more than 20 minutes in the `orders-api`, one should follow these diagnostic steps based on the provided context:\n\n1. Verify if there was indeed a breach by checking [p99-latency-orders-api](p99-latency-orders-api.md). This will confirm whether latency issues are present in this particular service and that it is not simply an error reading or system misconfiguration issue causing false positives for high latencies (although the context does suggest a breach has occurred during load spikes, which typically isn't caused by internal errors alone but rather external factors such as increased demand).\n\n2. Investigate if there are signs of saturation in [embedding-service](embedding-service.md) since it is known that the last high latency incident involved a slowdown to this service during times when load spikes occur, suggesting potential resource limitations or scaling issues within `embedding-service`.\n\n3. If evidence suggests that saturation in [embedding-service](embedding-service.md) contributes to increased loads on the orders-api leading to high latency (as inferred from context), one should take actions as outlined in [scale-embedding-service](scale-embedding-service.md). This involves scaling up or optimizing `embedding-service` resources which, if resolved appropriately by these services' administrators according to the guide mentioned herein, may alleviate pressure on orders-api and reduce latency issues subsequently experienced there.\n\n4. However, should it be determined that a bad deployment of [orders-api](orders-api.md) rather than an `embedding-service` issue causes increased demand (which could theoretically lead to sustained high latencies due to poorly optimized code or misconfigured resources), the appropriate action is outlined in [rollback-procedure](rollback-procedure.md). This would involve reverting changes made during a recent deployment of `orders-api` which may have introduced performance regressions, thus allowing for testing with different configurations to identify more stable and performant ones before fully rolling them back into production if necessary.\n\nPossible root causes that might lead to high latency incidents on the orders-api include: \n\na) The dependency (`embedding-service`) becomes saturated during load spikes, causing an indirect increase in `orders-api` request handling times (as seen from context). This suggests a need for scaling or optimizing resources within dependent services.\n\nb) Issues with the deployment of orders-api that might be contributing to poor performance under stress conditions are also potential root causes which necessitate rollback procedures and further investigation, as indicated by past incidents' resolutions in related context documents.\n\nIt should be noted however, without explicit details on standard operations or historical responses provided within the `rollback-procedure` document mentioned herein, I cannot provide a definitive procedure solely based on this information alone. It would typically involve reverting to previous stable versions and performing thorough testing before redeployment in production as per best practices which are not detailed specifically enough from the context given for exact guidance within these documents.",
+    "rag_time_seconds": 217.2,
+    "okf_answer": "The runbook titled \"incident-high-latency\" outlines procedures to handle incidents where there's a breach of expected performance levels in terms of response time. Specifically for `orders-api`, when an incident involving high latency is detected, the procedure includes:\n\n1. Confirming that orders-api indeed has surpassed its target 99th percentile latency using \"p99-latency-orders-api.\" As of the last measurement window mentioned in this runbook's context (not given here), it was at 420ms, above the under 300ms goal.\n\n2. Diagnosing by examining if `embedding-service`, which orders-api relies on, is experiencing saturation as a potential root cause for latency issues during load spikes (as indicated in \"p99-latency-orders-api\" context). This step involves checking the throughput of embedding-service and assessing its capacity to handle additional requests.\n\n3. If `embedding-service` is found saturated, you'd follow a scale up procedure denoted as [scale-embedding-service](scale-embedding-service.md) (context provided does not contain this concept). Typically, scaling would involve increasing the number of instances or resources allocated to cope with higher demand and relieve pressure on any single point that could be causing latency problems.\n\n4. In case a bad deployment is at fault instead\u2014a scenario implied by breaching performance thresholds during an incident\u2014you'd resort to \"rollback-procedure.\" This entails reverting orders-api back to the last known good state, as documented in its version history through CI/CD pipelines.\n\n5. Confirming that the rollback was successful by monitoring relevant service metrics for stability over a 15 minute window afterward (as per \"rollback-procedure\"). Monitored services could potentially include `p99-latency-orders-api` to ensure response times return to expected levels and `[agent-success-rate](agent-success-rate.md)` in the case of orchestration dependencies involved, although these concepts are not detailed within this context for a specific solution pathway related to orders creation or status updates via `POST /orders`, but rather general metrics across all endpoints affecting service reliability and performance comprehensively during rollbacks.\n\nPossible root causes mentioned include: saturation of downstream services (`embedding-service`) as well implying issues stemming from deployment problems within orders-api itself, though specific details on the latter are not provided in this set of concepts for a direct linkage to troubleshooting steps and rollback actions.",
+    "okf_time_seconds": 199.49
+  },
+  {
+    "id": "q11",
+    "type": "multi_hop",
+    "question": "What should you monitor after rotating API keys?",
+    "expected_answer": "auth-failure-rate, since key rotation can cause a temporary spike.",
+    "expected_sources": [
+      "rotate-api-keys.md",
+      "auth-failure-rate.md"
+    ],
+    "rag_answer": "Monitor the [auth-failure-rate](auth-failure-rate.md) for a temporary spike during the transition window.\n\nBased on step 5 in \"rotate-api-keys.md\" Section: Steps, we learn that after rotating API keys you should monitor auth-service's failure rate due to possible transitional issues.",
+    "rag_time_seconds": 59.41,
+    "okf_answer": "After rotating API keys, it is important to closely monitor several aspects for a smooth transition and maintaining service availability. Specifically referring to the concepts provided in your question would lead us to look at relevant areas of concern as outlined below based on their interrelated descriptions:\n\n1. Auth-service metrics - Given that authentication services may experience variations when keys are rotated, it is advisable to observe any changes or spikes in auth-failure rate within [auth-failure-rate](auth-failure-rate.md). Although the current value stands at 2.1%, a temporary increase could occur during rotation due to dependent services picking up new keys and users updating their credentials accordingly.\n\n2. Dependent service health - Since orders, agent tasks, notifications (including order confirmations), are handled by [orders-api](orders-api.md), [agent-orchestrator](agent-orchestrator.md), and [notification-service](notification_Service.md) respectively, all of which depend on the auth service for validation before processing their tasks or sending notifications/emails as per orders (as mentioned in related sections to each concept). It is prudent to ensure that these dependent services are up and running with new keys by monitoring them post-rotation through direct health checks.\n\n3. P99 latency metrics - Latency could potentially be impacted during the transition period, so keeping an eye on performance indicators such as [p99-latency-orders-api](p99_Latency__OrdersAPI), and if available, similar key for each of these dependent services would help assess any immediate effects.\n\n4. Alerts from observability stack - As per the related sections in various runbooks (especially [rotate-api-keys](rotate_ApiKeys).md) and other relevant processes such as [on-call-process](OnCallProcess__MD), alerts are expected to be generated when a metric crosses its threshold. It's wise monitoring for any anomalies post rotation, particularly after the 30 minutes mark since it may indicate an unresolved issue that has escalated beyond normal operational parameters and thus requires squad lead intervention as per [on-call-process](OnCallProcess__MD).\n\nIn summary, while rotating API keys is generally good practice for security hygiene, careful monitoring of these areas will help ensure continuity in service delivery. If the system's performance or reliability metrics deviate significantly from expected values (such as an unexpected spike in auth failures), prompt action should be taken to troubleshoot and resolve any issues that arise.",
+    "okf_time_seconds": 463.47
+  },
+  {
+    "id": "q12",
+    "type": "multi_hop",
+    "question": "Describe how the platform team handles incident escalation.",
+    "expected_answer": "An alert fires when a metric breaches target, the on-call engineer acknowledges within 10 minutes, follows the relevant runbook, escalates to squad lead if unresolved in 30 minutes, and logs a post-incident summary.",
+    "expected_sources": [
+      "on-call-process.md"
+    ],
+    "rag_answer": "The Platform Team, specifically an on-call engineer from their squads based on services and time zones (UTC), is responsible for handling incidents outside of business hours by following these steps: An alert triggers when a metric breaches its target; the on-call engineer acknowledges this within 10 minutes. They then follow a relevant runbook, which may include instructions specific to high latency issues or other related scenarios (e.g., incident_high_latency). If after escalating their efforts remain unresolved for up to an hour and thirty minutes following initial acknowledgment of the alert by themselves, they are instructed to further involve a squad lead who oversees that particular service affected. After resolution or when it's determined there is no immediate fix possible at this time due to hours-long issues (like in cases where infrastructure like Google Cloud VM instances fail and cannot be resolved within the set escalation timeline), they document their findings, decisions made during the incident response process, a post-incident summary. This information helps improve future responses by providing insights into what transpired without affecting business operations due to hourly metrics breaches when no on-call engineer is present (e.g., late at night or over weekends).",
+    "rag_time_seconds": 99.94,
+    "okf_answer": "The Platform Team manages incident escalation through a detailed process known as \"on-call\". Here's an explicit explanation of each step in this multi-part question, which involves handling incidents outside business hours based on metrics from the observability stack:\n\n1. **Alert Detection** - An alert is triggered when a relevant metric exceeds its target value (e.g., p99 latency for orders API breaches 400ms threshold). These alerts are fired by platform monitoring tools during business hours and after-hours, with the first step requiring an engineer to acknowledge them within 10 minutes of receipt via a built-in mechanism like Slack or email.\n\n2. **Initial Response** - The on-call engineer follows specific runbooks tailored for different alert types: 'incident-high-latency' is used when addressing high latency, 'rollback-procedure' if the issue seems to stem from a bad deployment of an affected service like orders API, and 'rotate-api-keys' in cases where credential rotation might temporarily affect system operations.\n\n3. **Escalation Protocol** - If after 30 minutes there is no resolution or significant improvement noted by the on-call engineer (who may be assisted remotely as needed), they escalate to a squad lead with more expertise in that specific service, providing details about what actions have been taken and any troubleshooting results.\n\n4. **Postmortem** - After an incident is resolved or stabilized enough for safe removal from high-priority alert statuses, the engineer logs all activities related to this event into a post-incident summary runbook that records everything done during these steps in order of occurrence and any learnings identified as part of process improvement.\n\n5. **Communication** - The Platform Team maintains an ongoing communication channel (such as Slack) specifically for handling incidents, ensuring information about the incident escalations is shared with all relevant parties to keep everyone informed and aligned during resolution efforts.\n\n6.01 If not already included in this answer due to space constraints: This runbook procedure also integrates closely with 'incident-high-latency', where historical records help identify similar patterns for future reference, as well as the roles of other services like auth service and embedding service that might affect or be affected by a latency incident.\n\nEach step is designed to efficiently guide on-call engineers through responding effectively to incidents outside normal business hours with minimal impact on end users while maintaining an up-to-date record for continual process improvement",
+    "okf_time_seconds": 444.32
+  },
+  {
+    "id": "q13",
+    "type": "multi_hop",
+    "question": "What happens to an order after it is created?",
+    "expected_answer": "orders-api validates the request via auth-service, writes the order record, returns confirmation, and triggers notification-service to send a confirmation email. Status updates remain available via the GET endpoint.",
+    "expected_sources": [
+      "data-flow-orders.md",
+      "orders-api.md"
+    ],
+    "rag_answer": "1. The auth-service validates the request token associated with the client's new order using information provided in context #0 (Section: Flow).\n2. Upon successful validation, orders-api writes the record for this newly placed order as detailed by endpoints described in context #1 and overview at points 3 to 6 respectively.\n3. Orders-api triggers notification-service which sends an email confirmation of the new purchase (this specific detail is implied but not directly stated, it can be inferred from step 4).\n4. The customer has access to order status updates via orders-api'sel GET endpoint for as long as this particular order remains active/not cancelled or fulfilled; details are provided in context #2 and endpoints at point 5 respectively.",
+    "rag_time_seconds": 57.41,
+    "okf_answer": "Unfortunately, based on the provided context which states \"(No matching concept was found in the knowledge base.),\" I am unable to provide a comprehensive answer regarding what typically occurs with orders once they are placed. Usually, post-order creation processes may include confirmation of placement, inventory checking for availability and fulfillment status, payment authorization or collection based on customer choice (credit/debit card, online payments), shipping preparations if required by the buyer, updates to stock levels in case items are sold out, notifying sales representatives about completed orders that need processing like packaging or pick-up for delivery. However, these processes can vary widely across different businesses and retail environments. To provide a detailed answer specific to an organization's workflow concerning order completion after creation would require access to the relevant concepts within their knowledge base related to operational practices, procedures, technology systems in place (such as ERP or CRM software functionalities), customer service policies, etc., none of which are provided here. Therefore, I must reiterate that with this context'incomplete information,' a detailed and accurate answer cannot be given regarding the fate of orders post-creation within your specific organizational framework.",
+    "okf_time_seconds": 60.48
+  },
+  {
+    "id": "q14",
+    "type": "multi_hop",
+    "question": "What is the rollback procedure and which services does it apply to?",
+    "expected_answer": "Identify the last known-good version, trigger rollback via the deployment pipeline, confirm via health endpoint, monitor the relevant metric for 15 minutes, and notify on-call. It applies to orders-api and agent-orchestrator.",
+    "expected_sources": [
+      "rollback-procedure.md"
+    ],
+    "rag_answer": "The standardized rollback procedure involves identifying a last known good version from deployment history, triggering its restoration through the pipeline, confirming completion via service health checks (such as monitoring p99-latency or agent success rate), and ensuring proper communication with on-call channels while logging incidents. This protocol applies to both [orders-api](orders-api.md) and [agent-orchestrator](agent-orchestrator.md).\n",
+    "rag_time_seconds": 63.67,
+    "okf_answer": "The rollback procedure, as detailed in a runbook titled \"rollback-procedure,\" outlines steps for reverting back to a last known good state following an incorrect deployment across platform services. This standard protocol applies specifically to the `orders-api` and `agent-orchestrator` services. The process includes identifying the previous stable version from CI/CD history, triggering rollback through deployment pipeline, confirmation by checking service health endpoints like [p99-latency-orders-api](https://example.com/monitor/metrics#p99_latency_orders_api) or other relevant services to ensure successful completion (e.g., monitoring `agent-success-rate`), and notifying the on-call channel along with updating incident logs for record keeping, as per platform team guidelines.\n\nFor a complete response based on this runbook: \n1. Firstly, an engineer or member of the Platform Team must identify the last known good version from deployment history using tools such as continuous integration/continuous delivery (CI/CD) pipelines and artifact repositories commonly provided by infrastructure platforms like GitHub Actions or GitLab Pipelines. This step ensures a reliable point in time to which rollback can occur before any issue-inducing changes were introduced into the live environment.\n   \n2. Once identified, they trigger this old version through the deployment pipeline for immediate release back onto production environments of both `orders-api` and `agent-orchestrator`. This is typically done by selecting a specific tag or commit hash in the CI/CD configuration that corresponds to our last known good state before going bad with updates.\n   \n3. After initiating rollback, it's crucial for engineers to confirm whether the service has successfully rolled back without any issues ongoingly affecting user experience and functionality by checking endpoints associated with health checks of these services\u2014either directly through [p99-latency-orders-api](https://example.com/monitor/metrics#p99_latency_orders_api) or other relevant metrics like `agent-success-rate`.\n   \n4. As soon as the rollback is confirmed and no disruptions are identified, this engineer must notify their on-call channel to update them about the incident's resolution status according to platform team protocol for communication transparency and accountability during outages or performance issues. This typically involves updating a ticket in an issue tracking system like Jira or Confluence where service incidents occur alongside recording necessary details of what happened, how it was handled (rollback), by whom, etc.\n   \n5. The on-call engineer is expected to document this incident thoroughly into the platform's logbook for future reference and lessons learned purposes. Incident logging aids in post-mortem analysis which assists not only with immediate remediation but also long-term preventative strategies against similar occurrences moving forward.\n   \nIn case of failure or if rollback itself is problematic, the engineer should revert to an alternative strategy like rotating API keys (if it's a misconfiguration issue), following another runbook in place for such circumstances as outlined under \"incident-high-latency.\" If resolution takes longer than 30 minutes, which indicates that initial rollback efforts failed or encountered problems themselves not addressed by the plan above, they should escalate to the squad lead of respective services\u2014Order Processing and Agent Infrastructure.",
+    "okf_time_seconds": 531.45
+  },
+  {
+    "id": "q15",
+    "type": "unanswerable",
+    "question": "What is artificial intelligence?",
+    "expected_answer": "Not answerable from this knowledge base.",
+    "expected_sources": [],
+    "rag_answer": "Artificial intelligence cannot be defined based solely on the provided context blocks as they do not contain information about its definition or general concepts of AI.",
+    "rag_time_seconds": 49.56,
+    "okf_answer": "I'm sorry, but I can't provide an answer based on my current context as no relevant concepts about \"artificial intelligence\" were retrieved from your provided information. However, generally speaking, Artificial Intelligence (AI) refers to the simulation of human intelligence in machines that are designed to think and learn like humans. AI systems aim to perform tasks typically requiring human intellect, such as visual perception, speech recognition, decision-making, and language translation. There are different types of artificial intelligence including machine learning, where algorithms improve automatically through experience without being explicitly programmed for each task; robotics, which combine mechanical engineering with computer science principles to create machines that interact autonomously in physical environments; evolutionary computing, inspired by biological evolution's mechanisms such as selection and inheritance. AI has a wide range of applications across various industries like healthcare, finance, manufacturing, transportation etc., but it also raises ethical questions about bias, privacy, job displacement among others which are still being debated by experts in the field today.",
+    "okf_time_seconds": 57.1
+  },
+  {
+    "id": "q16",
+    "type": "unanswerable",
+    "question": "What is the weather like today?",
+    "expected_answer": "Not answerable from this knowledge base.",
+    "expected_sources": [],
+    "rag_answer": "I'm unable to answer the question about the weather based on the provided context. The information given pertains only to daily active agent instances, not meteorological data. For current and accurate weather conditions, I recommend checking a reliable weather forecasting service or website.",
+    "rag_time_seconds": 43.01,
+    "okf_answer": "I'm sorry, but I can't provide real-time or current day weather updates as my training data only includes information up to September 2021. To get updated on what the weather conditions are for your location today, please check a reliable online source like the National Weather Service website or an app that provides localized forecasts and climate conditions based on real-time meteorological observations.",
+    "okf_time_seconds": 25.98
+  },
+  {
+    "id": "q17",
+    "type": "unanswerable",
+    "question": "What is the company's revenue this quarter?",
+    "expected_answer": "Not answerable from this knowledge base.",
+    "expected_sources": [],
+    "rag_answer": "I cannot answer the question about the company' extraneous data like their current or past revenues, as it was not provided in any of the given context blocks I have access to. The information available only includes latency measurements and a rollback procedure if certain conditions are met concerning service performance metrics but does not contain revenue-related details.",
+    "rag_time_seconds": 46.11,
+    "okf_answer": "I'm sorry, but I can't provide an answer based on my current knowledge as there are no retrieved concepts related to a specific company's revenue for any given quarter. To find such financial details about a particular business, you may want to consult the latest earnings reports or press releases issued by that company directly.",
+    "okf_time_seconds": 18.66
+  },
+  {
+    "id": "q18",
+    "type": "simple_lookup",
+    "question": "What is the current value of embedding-service-throughput?",
+    "expected_answer": "850 requests/sec",
+    "expected_sources": [
+      "embedding-service-throughput.md"
+    ],
+    "rag_answer": "The current value of embedding-serviceComepletionservice throughput is 850 requests per second.",
+    "rag_time_seconds": 28.37,
+    "okf_answer": "The current value for `embedding-service-throughput` as per our retrieved concepts is **850 requests/sec**. This metric indicates how many text embedding requests are being processed every second under typical load conditions by the embedding service and it's a critical performance target that reflects capacity to handle projected agent growth, with an aim for this number to reach 1000 requests per second (to support such growth).",
+    "okf_time_seconds": 73.39
+  }
+]
